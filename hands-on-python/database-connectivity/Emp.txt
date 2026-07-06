@@ -1,0 +1,4 @@
+(1, 'Karan', 'Bhavanagar', 74999.0)
+(23, 'Harry', 'Morbi', 59000.0)
+(24, 'Aman', 'kadi', 24900.0)
+(66, 'Anas', 'Ahmedabad', 66000.0)

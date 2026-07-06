@@ -1,0 +1,11 @@
+Pid,Pname,City,State,Total_number(Sold Product),Price,Revenue
+P01,FAN,Surat,Gujarat,76,2500,190000
+P02,TV,Ahmedabad,Gujarat,26,35999,935974
+P03,MOBILE,Ahmedabad,Gujarat,50,25999,1299950
+P04,Microwave,Mumbai,Maharastra,16,15000,240000
+P05,Speaker,Morbi,Gujarat,65,2599,168935
+P06,Projector,Ahmedabad,Gujarat,13,16000,208000
+P07,SSD,New Delhi,Delhi,12,5000,60000
+P08,Laptop,Morbi,Gujarat,26,58000,1508000
+P09,Printer,Surat,Gujarat,40,9999,399960
+P10,Headphone,Morbi,Gujarat,154,35999,5543846
