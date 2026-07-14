@@ -9,8 +9,8 @@ practice projects — organized by topic.
 python-programs/
 ├── dsa-course-assignments/   # Class-test & practical-set assignments
 │   ├── class-tests-and-practice/
-│   ├── gui-db-mini-projects/
-│   └── practical-sets/
+│   └──  gui-db-mini-projects/
+│   
 └── hands-on-python/          # Self-directed practice, by topic
     ├── arrays/
     ├── basics-to-medium/
