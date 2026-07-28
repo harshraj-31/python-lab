@@ -1,115 +1,140 @@
-import pandas as pd   # Import pandas library for data handling
+import pandas as pd   # Import the pandas library to work with tables and CSV files
+
+# ===========================================================
+#               AGGREGATE FUNCTIONS IN PANDAS
+# ===========================================================
+# Aggregate functions are used when we want to summarize data.
+# Instead of looking at every single value, they return
+# one meaningful result.
+#
+# Common aggregate functions:
+# mean()  -> Finds the average value
+# sum()   -> Adds all values together
+# min()   -> Finds the smallest value
+# max()   -> Finds the largest value
+# count() -> Counts non-empty values
+# ===========================================================
+
 
 # -----------------------------------------------------------
-# AGGREGATE FUNCTIONS
+# LOAD THE CSV FILE
 # -----------------------------------------------------------
-# Aggregate functions are used to convert multiple values
-# into a single value.
-# They help in summarizing and analyzing data.
+# Read the pokemon.csv file and store it inside a DataFrame.
+# A DataFrame is like an Excel sheet with rows and columns.
 
-# Examples:
-# mean()  -> average
-# sum()   -> total
-# min()   -> smallest value
-# max()   -> largest value
-# count() -> number of values
-
-# -----------------------------------------------------------
-# LOAD DATA FROM CSV FILE
-# -----------------------------------------------------------
-# Read the CSV file and store it in a DataFrame
 df = pd.read_csv("pokemon.csv")
 
-# A DataFrame is like a table (rows + columns)
 
 # -----------------------------------------------------------
-# AGGREGATE FUNCTIONS ON FULL DATAFRAME
+# APPLY AGGREGATE FUNCTIONS ON THE ENTIRE DATAFRAME
 # -----------------------------------------------------------
-# numeric_only=True ensures only numeric columns are used
-# (important because dataset may contain text columns)
+# Since the dataset contains both numbers and text,
+# numeric_only=True tells pandas to ignore text columns
+# and perform calculations only on numeric columns.
 
-# print(df.mean(numeric_only=True))  
-# -> Finds average of all numeric columns
+# print(df.mean(numeric_only=True))
+# Finds the average of every numeric column.
 
 # print(df.sum(numeric_only=True))
-# -> Finds total of all numeric columns
+# Adds all values in every numeric column.
 
 # print(df.min(numeric_only=True))
-# -> Finds smallest value in each numeric column
+# Displays the smallest value from every numeric column.
 
 # print(df.max(numeric_only=True))
-# -> Finds largest value in each numeric column
+# Displays the largest value from every numeric column.
 
 # print(df.count())
-# -> Counts non-empty values in each column
+# Counts how many non-empty values are present in each column.
 
 
 # -----------------------------------------------------------
-# AGGREGATE FUNCTIONS ON SINGLE COLUMN
+# APPLY AGGREGATE FUNCTIONS ON A SINGLE COLUMN
 # -----------------------------------------------------------
-# Here we select specific columns using df["ColumnName"]
+# If we need information about only one column,
+# we select it using:
+# df["ColumnName"]
 
 # print(df["Height"].mean())
-# -> Average height of all Pokémon
+# Calculates the average height of all Pokémon.
 
 # print(df["Weight"].sum())
-# -> Total weight of all Pokémon
+# Calculates the total weight of all Pokémon.
 
 # print(df["Height"].min())
-# -> Minimum height
+# Finds the shortest Pokémon.
 
 # print(df["Weight"].max())
-# -> Maximum weight
+# Finds the heaviest Pokémon.
 
 # print(df["Name"].count())
-# -> Total number of Pokémon names (non-empty rows)
+# Counts how many Pokémon names are available.
 
 
-# -----------------------------------------------------------
-#                   GROUP BY FUNCTION (VERY IMPORTANT)
-# -----------------------------------------------------------
-# groupby() is used to split data into groups based on a column
-# and then apply aggregate functions on each group
+# ===========================================================
+#                   GROUP BY FUNCTION
+# ===========================================================
+# groupby() is one of the most useful functions in pandas.
+#
+# It divides the data into separate groups based on
+# the values of a particular column.
+#
+# Here we are grouping Pokémon according to their Type1.
+#
+# Example:
+# Fire   -> All Fire Pokémon
+# Water  -> All Water Pokémon
+# Grass  -> All Grass Pokémon
+# Electric -> All Electric Pokémon
+#
+# Once the groups are created, we can perform calculations
+# on each group separately.
 
-# Example: Group Pokémon based on their Type1
 group = df.groupby("Type1")
 
-# Now each type (Fire, Water, Grass, etc.) becomes a group
-# 💭 Think:
-# Now data is divided like:
-# Fire group 🔥
-# Water group 💧
-# Grass group 🌱
-# etc...
-
 
 # -----------------------------------------------------------
-#               APPLY AGGREGATE FUNCTIONS ON GROUPED DATA
+# APPLY AGGREGATE FUNCTIONS ON GROUPED DATA
 # -----------------------------------------------------------
+# Now each Pokémon type is treated as its own group.
 
 # print(group["Height"].mean())
-# -> Average height for each Pokémon type
+# Finds the average height of Pokémon in each type.
 
 # print(group["Height"].sum())
-# -> Total height for each type
+# Adds the heights of Pokémon belonging to each type.
 
 # print(group["Height"].min())
-# -> Minimum height in each type
+# Finds the shortest Pokémon in every type.
 
 # print(group["Height"].max())
-# -> Maximum height in each type
+# Finds the tallest Pokémon in every type.
 
 print(group["Height"].count())
-# -> Number of Pokémon in each type
+# Counts how many Pokémon belong to each type.
 
 
-
-# -----------------------------------------------------------
-#               SUMMARY (IMPORTANT FOR EXAM)
-# -----------------------------------------------------------
-# 1. Aggregate functions reduce data to a single value
-# 2. Can be applied on:
-#    - Entire DataFrame
-#    - Specific column
-#    - Grouped data using groupby()
-# 3. groupby() is used for category-wise analysis
+# ===========================================================
+#                    EXAM SUMMARY
+# ===========================================================
+# ✔ Aggregate functions are used to summarize data.
+#
+# ✔ They can be applied on:
+#    1. The entire DataFrame
+#    2. A specific column
+#    3. Grouped data using groupby()
+#
+# ✔ groupby() divides the dataset into categories
+#    so calculations can be performed on each category separately.
+#
+# Example:
+# Instead of finding the average height of all Pokémon,
+# groupby("Type1") lets us find:
+#
+# Fire     -> Average Height
+# Water    -> Average Height
+# Grass    -> Average Height
+# Electric -> Average Height
+#
+# This makes category-wise analysis very easy.
+# ===========================================================
